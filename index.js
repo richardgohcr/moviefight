@@ -42,6 +42,10 @@ const onInput = async (event) => {
     const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
     option.classList.add('dropdown-item');
     option.innerHTML = `<img src="${imgSrc}" /> ${movie.Title}`;
+    option.addEventListener('click', () => {
+      dropdown.classList.remove('is-active');
+      input.value = movie.Title; //Note that in this function there is a closure scope over movie
+    });
 
     resultsWrapper.appendChild(option);
   });
